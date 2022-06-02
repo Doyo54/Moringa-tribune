@@ -1,5 +1,6 @@
 {%extends 'all-news/base.html'%}
 {% block content %} 
+{% load bootstrap3 %}
 {{ block.super}}
 
 <div class="container">
@@ -26,6 +27,21 @@
   </div>
   {% endfor %}
 
+
 </div>
+
+<div class="container-fluid">
+
+  <form action="{%url 'newsToday'%}" method="post">
+    {%csrf_token%}
+
+    {% for field in letterForm %}
+    {% bootstrap_field field %}
+{% endfor %}
+    <input type="submit" value="Subscribe">
+  </form>
+
+</div>
+
 
 {% endblock %}
